@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeongjin</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #header img {
+      display: block;
+      margin: 0 auto;
+      width: 300px; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+      border: 1px solid #ffffff00;
+      border-radius: 5px;
+    }
+
+    #search-bar {
+      width: 50%;
+      margin: 0 auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #search-button {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #results-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    #results-list li {
+      margin-bottom: 10px;
+    }
+
+    #results-list a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #results-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* Style for h1 heading */
+    #header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    #current-time {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    #version-info {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    #japdam1 {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    #use {
+      text-align: center;
+      font-size: 9px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <img src="https://file.miricanvas.com/design_thumb/2024/03/27/10/20/kev41e71aqtjbjhm/thumb.jpg?size=400" alt="Jeongjin Search Engine Logo">
+  </div>
+
+  <div id="header">
+    <h1></h1>
+  </div>
+
+  <div id="search-bar">
+    <input type="text" id="search-input" placeholder="검색어를 입력해주세요">
+    <button id="search-button">검색</button>
+  </div>
+
+  <div id="japdam1">쉽고 빠른 Jeongjin 검색</div>
+
+  <div id="current-time">현재 시간: <span id="time-display"></span></div>
+    
+  
+
+  <div id="version-info">v 0.1.12 | Powered by <a href="https://www.youtube.com/@crazyCNSH">CRAZY_CNSH</div>
+
+
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const timeDisplay = document.getElementById('time-display');
+
+    searchButton.addEventListener('click', () => {
+            const searchQuery = searchInput.value.trim();
+
+            if (searchQuery) {
+                // Redirect to Google search with the query
+                window.location.href = `https://www.google.com/search?q=${searchQuery}`;
+            }
+        });
+
+    // Update time display every second
+    setInterval(() => {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1; // Months are zero-indexed
+      const day = now.getDate();
+      const hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0'); // Pad with zeros
+      const seconds = now.getSeconds().toString().padStart(2, '0'); // Pad with zeros
+
+      timeDisplay.textContent = `${year}년 ${month}월 ${day}일 ${hours}:${minutes}:${seconds}`;
+    }, 1000);
+  </script>
+</body>
+</html>
