@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSP by Quarter-Pi</title>
+  <style>
+    
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #header img {
+      display: block;
+      margin: 0 auto;
+      width: 500px; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+      border: 1px solid #ffffff00;
+      border-radius: 5px;
+    }
+
+    #search-bar {
+      width:30%;
+      margin: 0 auto;
+      padding: 8px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+    }
+
+    #search-button {
+      padding: 5px 10px;
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #results-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    #results-list li {
+      margin-bottom: 10px;
+    }
+
+    #results-list a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #results-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* Style for h1 heading */
+    #header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    #current-time {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    #version-info {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    #japdam1 {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    #use {
+      text-align: center;
+      font-size: 9px;
+      margin-top: 5px;
+    }
+
+    #search-button img {
+      display: block;
+      margin: 0 auto;
+      width: 20px; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+      border: 1px solid #ffffff00;
+      border-radius: 5px;
+    }
+
+    #footer img {
+      display: block;
+      margin: 0 auto;
+      width: 1700px; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
+      border: 1px solid #ffffff00;
+      border-radius: 5px;
+    }
+
+    #empty {
+      text-align: center;
+      font-size: 180px;
+      margin-top: 5px;
+    }
+
+  </style>
+</head>
+<body>
+
+
+    <div id="empty">ㅤ</div>
+  <div id="header">
+    <img src="https://media.discordapp.net/attachments/1203041599941115964/1232692547957035108/-_-001_11.png?ex=662a61e5&is=66291065&hm=be0fa6fcf757ee138bd1942dc0226e6baec52310d1a9f4bf7ec4dbc268b4b8ac&=&format=webp&quality=lossless&width=1440&height=576" alt="Jeongjin Search Engine Logo">
+  </div>
+
+  <div id="header">
+    <h1></h1>
+  </div>
+
+  <div id="search-bar">
+    <input type="text" id="search-input" placeholder="검색어를 입력해주세요">
+    <button id="search-button"><img src="https://media.discordapp.net/attachments/1223470433425166378/1232666406223614012/-001_8.png?ex=662a498d&is=6628f80d&hm=682d9f4c97e18db0b4ca33e0e60856824769ee50a713d029fedef2bd65789053&=&format=webp&quality=lossless&width=644&height=644" alt="Jeongjin search button"></button>
+  </div>
+
+  <div id="japdam1">쉽고 빠른 JSP 검색</div>
+
+  <div id="current-time">현재 시간: <span id="time-display"></span></div>
+    
+  
+
+  <div id="version-info">v 0.3.2 | Quarter-Pi Present <a href="https://github.com/Jaewon0418/JSP-JeongjinSearchProject_by_Quarter-Pi/releases">업데이트 확인하기</a></div>
+
+  <div id="empty">ㅤ</div>
+  <div id="empty">ㅤ</div>
+
+  <div id="footer">
+    <img src="https://cdn.discordapp.com/attachments/1203041599941115964/1232681865757065337/-_-001_10.png?ex=662a57f2&is=66290672&hm=d39a45792ecc730963d2d1c891fa23efead98865b288c99493c2c69c7f674d2c&" alt="introduce">
+  </div>
+ 
+
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const timeDisplay = document.getElementById('time-display');
+
+    searchButton.addEventListener('click', () => {
+            const searchQuery = searchInput.value.trim();
+
+            if (searchQuery) {
+                // Redirect to Google search with the query
+                window.location.href = `https://www.google.com/search?q=${searchQuery}`;
+            }
+        });
+
+    // Update time display every second
+    setInterval(() => {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1; // Months are zero-indexed
+      const day = now.getDate();
+      const hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0'); // Pad with zeros
+      const seconds = now.getSeconds().toString().padStart(2, '0'); // Pad with zeros
+
+      timeDisplay.textContent = `${year}년 ${month}월 ${day}일 ${hours}:${minutes}:${seconds}`;
+    }, 1000);
+  </script>
+</body>
+</html>
